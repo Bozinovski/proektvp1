@@ -9,7 +9,6 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/")
 public class webController {
 
     @Autowired
@@ -44,7 +43,7 @@ public class webController {
     public boolean findKorisnik( @RequestParam String username,@RequestParam String password) {
         Korisnici korisnici=korisniciRepository.findByUsername(username);
 
-        if(korisnici.getPassword()==password){
+        if(korisnici.getPassword().equals(password)){
             return true;
         }
         else
